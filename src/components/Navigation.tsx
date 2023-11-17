@@ -12,6 +12,11 @@ const Navigation = () => {
   return (
     <nav className={`navigation `}>
       <h1>Joelbay Collections</h1>
+      <div className={`container ${menuOpen ? "change" : ""}`} onClick={handleMenuToggle}>
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+    </div>
       <div className={`navOptions ${menuOpen ? "open" : ""}`}>
         {navLinks.map(linkInfo => <Link to={linkInfo[1]}>{linkInfo[0]}</Link> )}
       </div>

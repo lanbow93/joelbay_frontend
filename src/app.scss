@@ -6,51 +6,73 @@ $fancy-font: 'Agbalumo', sans-serif;
     padding: 0;
 }
 
-
-
 .navigation {
     background-color: #232F3E;
     color: white;
     font-family: $fancy-font;
-    h1{
+    h1 {
         text-align: center;
-        
         padding: .5rem;
     }
-    
 
-    .navOptions{
+    .container {
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 1rem;
+
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        &.change {
+            .bar1 {
+                transform: translate(0, 11px) rotate(-45deg);
+            }
+            .bar2 {
+                opacity: 0;
+            }
+            .bar3 {
+                transform: translate(0, -11px) rotate(45deg);
+            }
+        }
+    }
+
+    .navOptions {
         display: flex;
         justify-content: space-around;
-        a{
+
+        a {
             text-decoration: none;
             color: white;
             margin-bottom: .5rem;
             padding-bottom: .25rem;
             overflow: hidden;
-            position: relative; // Add this line to make ::after relative to the link
+            position: relative;
 
-            /* Slide in */
             &::after {
                 content: '';
                 position: absolute;
                 bottom: 0;
-                left: 50%; // Start from the middle
-                width: 0; // Initially, have zero width
+                left: 50%;
+                width: 0;
                 height: 0.1em;
                 background-color: white;
                 opacity: 0;
                 transition: width 300ms, opacity 300ms, transform 1000ms;
-                transform: translateX(-50%); // Adjust the transform to center the underline
+                transform: translateX(-50%);
             }
 
             &:hover::after,
             &:focus::after {
-                width: 100%; // Expand to 100% on hover or focus
+                width: 100%;
                 opacity: 1;
             }
         }
     }
-
-
 }

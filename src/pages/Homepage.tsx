@@ -1,8 +1,8 @@
 
 function Homepage(){
     return <div className="homepage">
-        <h1>Joelbay</h1>
-        <h2>Instruments, Collectibles, And More!</h2>
+       
+        <h1>Instruments, Collectibles, And More!</h1>
     </div>
 }
 
