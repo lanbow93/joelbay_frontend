@@ -66,9 +66,13 @@ $fancy-font: 'Agbalumo', sans-serif;
     }
 
     .navOptions {
-        display: flex;
-        justify-content: space-around;
-
+        
+        ul{
+            display:flex;
+            justify-content: space-around;
+            list-style-type: none;
+            padding-bottom: 1rem;
+        }
         a {
             text-decoration: none;
             color: white;
@@ -99,5 +103,11 @@ $fancy-font: 'Agbalumo', sans-serif;
     }
 }
 
+.homepage{
+    h1{
+        text-align: center;
+        font-family: $fancy-font;
+    }
+}
 
 

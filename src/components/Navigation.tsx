@@ -4,7 +4,7 @@ import {navLinks} from "../utils/jsonDetails.json"
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  console.log(navLinks)
+ 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
@@ -18,7 +18,9 @@ const Navigation = () => {
         <div className="bar3"></div>
     </div>
       <div className={`navOptions ${menuOpen ? "open" : "closed"}`}>
-        {navLinks.map(linkInfo => <Link to={linkInfo[1]}>{linkInfo[0]}</Link> )}
+        <ul>
+        {navLinks.map(linkInfo => <li key={linkInfo[1]} ><Link  to={linkInfo[1]} >{linkInfo[0]}</Link></li> )}
+        </ul>
       </div>
     </nav>
   );
