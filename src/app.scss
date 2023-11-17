@@ -6,6 +6,28 @@ $fancy-font: 'Agbalumo', sans-serif;
     padding: 0;
 }
 
+
+
+
+@media screen and (max-width: 48rem) {
+    .navigation{
+        .container{
+            display: inline-block !important;
+        }
+        .closed {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-out;
+          }
+          
+        .open {
+        max-height: 200px; /* Adjust this value based on your content */
+        transition: max-height 1s ease-in;
+        }
+          
+    }
+}
+
 .navigation {
     background-color: #232F3E;
     color: white;
@@ -16,10 +38,10 @@ $fancy-font: 'Agbalumo', sans-serif;
     }
 
     .container {
-        display: inline-block;
+        display: none;
         cursor: pointer;
         position: absolute;
-        top: 0;
+        top: .4rem;
         right: 1rem;
 
         .bar1, .bar2, .bar3 {
@@ -27,7 +49,7 @@ $fancy-font: 'Agbalumo', sans-serif;
             height: 5px;
             background-color: white;
             margin: 6px 0;
-            transition: 0.4s;
+            transition: 1s;
         }
 
         &.change {
@@ -76,3 +98,6 @@ $fancy-font: 'Agbalumo', sans-serif;
         }
     }
 }
+
+
+

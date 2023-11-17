@@ -17,7 +17,7 @@ const Navigation = () => {
         <div className="bar2"></div>
         <div className="bar3"></div>
     </div>
-      <div className={`navOptions ${menuOpen ? "open" : ""}`}>
+      <div className={`navOptions ${menuOpen ? "open" : "closed"}`}>
         {navLinks.map(linkInfo => <Link to={linkInfo[1]}>{linkInfo[0]}</Link> )}
       </div>
     </nav>
