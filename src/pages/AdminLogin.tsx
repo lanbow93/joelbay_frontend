@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ErrorScreen from '../components/ErrorScreen'
 import LoadingScreen from '../components/LoadingScreen'
 import url from '../router/url'
 
-function Login() {
+function AdminLogin() {
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [errorData, setErrorData] = useState({
@@ -34,19 +34,14 @@ function Login() {
             })
 
             if (response.ok) {
-                const jsonResponse = await response.json()
-                sessionStorage.setItem(
-                    'account',
-                    JSON.stringify(jsonResponse.data)
-                )
-                navigate('/home')
+                navigate('/editmenu')
             } else {
                 const data = await response.json()
                 console.log(data);
                 const { error, message, status } = data
                 setErrorData({
-                    errorMessage: status,
-                    errorAdditional: message,
+                    errorMessage: message,
+                    errorAdditional: status,
                     errorStatus: error,
                 })
                 setIsModalActive(true)
@@ -60,8 +55,6 @@ function Login() {
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        // Use the validateNoSpaces function for the username field
-
         setUserData({ ...userData, [name]: value })
     }
 
@@ -84,7 +77,7 @@ function Login() {
                     <LoadingScreen />
                 ) : (
                     <form onSubmit={handleSubmission}>
-                        <h2>Speedy Login</h2>
+                        <h2>Admin Login</h2>
                         <label>Username:</label>
                         <input
                             required
@@ -111,4 +104,4 @@ function Login() {
     )
 }
 
-export default Login
+export default AdminLogin

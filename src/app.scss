@@ -26,7 +26,13 @@ $fancy-font: 'Agbalumo', sans-serif;
         }
           
     }
+    .loadingScreen img {
+        max-width: 80%;
+
+    }
 }
+
+
 
 .navigation {
     background-color: #232F3E;
@@ -103,6 +109,58 @@ $fancy-font: 'Agbalumo', sans-serif;
     }
 }
 
+
+// Mixin for common styles
+@mixin button-styles {
+    background-color: var(--lightpurple-color);
+    box-shadow: 2px 3px 4px black;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    color: white;
+  }
+  
+  .loadingScreen img {
+    margin-top: 2rem;
+    min-width: 80%;
+    border-radius: 30rem;
+    justify-self: center;
+}
+  .errorModal {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.623);
+    display: none;
+  }
+  
+  .showError {
+    display: flex;
+    justify-content: center; // Center horizontally
+    align-items: center; // Center vertically
+  }
+  
+  .errorScreen {
+    background-color: grey;
+    position: absolute;
+    padding: 1rem;
+    justify-self: center;
+   
+  
+    h1 {
+      color: white;
+      text-shadow: red 1px 1px;
+      margin-bottom: 0.5rem;
+    }
+  
+    h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+  
+    button {
+      @include button-styles; // Using the mixin
+    }
+  }
 .homepage{
     h1{
         text-align: center;
@@ -110,4 +168,21 @@ $fancy-font: 'Agbalumo', sans-serif;
     }
 }
 
+.loginPage {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 20rem 20rem;
+    h2 {
+        grid-column: span 2;
+        text-align: center;
+    }
+    input{
+        margin-bottom: 1rem;
+    }
+}
 
