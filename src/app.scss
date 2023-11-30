@@ -27,15 +27,14 @@ $bgcolor: #232F3E;
         }
           
     }
+
+
     .loadingScreen img {
         max-width: 80%;
     }
-    .loginPage{
+    .loginPage, .editMenu{
         form{
             grid-template-columns: 1fr !important;
-            h2, button{
-                
-            }
         }
     }
 }
@@ -211,7 +210,7 @@ $bgcolor: #232F3E;
 
 
 
-.loginPage {
+.loginPage, .editMenu {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -234,6 +233,9 @@ $bgcolor: #232F3E;
         button {
             grid-column: span 2;
             font-size: 1.25rem;
+        }
+        textarea{
+            margin-bottom: 1rem;
         }
     }
 }

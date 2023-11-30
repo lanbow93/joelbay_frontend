@@ -1,3 +1,4 @@
 {
-    "navLinks": [["Home","/"],["Listings","/listings"],["Specials","/specials"],["Contact Us","/contact"]]
+    "navLinks": [["Home","/"],["Listings","/listings"],["Specials","/specials"],["Contact Us","/contact"]],
+    "loadingStrings": ["Welcome to React", "Smooth transitions", "Array of strings"]
 }
