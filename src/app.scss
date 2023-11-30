@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 $fancy-font: 'Agbalumo', sans-serif;
 $bgcolor: #232F3E;
+$bgOffset: #526070;
 
 * {
     margin: 0;
@@ -35,6 +36,7 @@ $bgcolor: #232F3E;
     .loginPage, .editMenu{
         form{
             grid-template-columns: 1fr !important;
+        
         }
     }
 }
@@ -205,6 +207,27 @@ $bgcolor: #232F3E;
             margin: 1rem;
             font-size: 1.25rem;
         }
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+        background-color: $bgcolor;
+        margin-top: 1rem;
+        padding: 1.25rem;
+        border-radius: 10rem;
+        font-family: $fancy-font;
+        font-size: 1.25rem;
+    }
+    a:hover{
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        background-color: $bgOffset;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+    a:active{
+        box-shadow: none;
+        transform: translateY(0);
     }
 }
 

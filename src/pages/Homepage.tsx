@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Homepage() {
   return (
     <div className="homepage">
@@ -17,6 +19,7 @@ function Homepage() {
             Explore the unique stories behind each item and connect with sellers to make a meaningful purchase. At Joelbay Collections, we believe in the power of community and compassion.
         </p>
       </div>
+      <Link to={"/listings"}>Enter Here</Link>
     </div>
   );
 }
