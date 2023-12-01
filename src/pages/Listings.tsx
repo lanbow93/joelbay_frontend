@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Loading from "../components/Loading"
 import ErrorScreen from "../components/ErrorScreen"
 import url from "../router/url"
+import ListingCard from "../components/ListingCard"
 
 function Listings(){
     const [isLoading, setIsLoading] = useState(false)
@@ -72,8 +73,13 @@ function Listings(){
 
                 {isLoading ? (
                     <Loading />
-                ) : (
-                <h1>Listings Page</h1> 
+                ) : (<>
+                <h1>Listings Page</h1>
+                <div className="listingDisplay">
+                    {listingData.map((listing: any) => <ListingCard {...listing} />)}
+                </div> 
+                </>
+                
                 )}
         
     </div>

@@ -8,6 +8,12 @@ $bgOffset: #526070;
     padding: 0;
 }
 
+.bold{
+    font-weight: bold;
+}
+.underline{
+    text-decoration: underline;
+}
 
 
 
@@ -237,9 +243,6 @@ $bgOffset: #526070;
         transform: translateY(0);
     }
 }
-
-
-
 .loginPage, .editMenu {
     display: flex;
     justify-content: center;
@@ -270,5 +273,49 @@ $bgOffset: #526070;
     }
 }
 
+
+
+.listings{
+    h1{
+        text-align: center;
+    }
+    .listingDisplay{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .listingCard {
+        width: 20rem;
+        border: 10px solid $bgOffset; /* 1px in rem units */
+        border-radius: 1rem;
+        margin: 10px; /* 10px in rem units */
+        padding: 10px; /* 10px in rem units */
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .cardImage{
+        display: flex;
+        
+        height: 8rem;
+        align-self: center;
+        .product-image {
+            max-width: 10rem; /* 100px in rem units */
+            max-height: 8rem; /* 100px in rem units */
+            object-fit: contain;
+
+            justify-self: center;
+          }
+      }
+      
+      
+      
+      .product-name {
+        font-size: 1.2rem; /* 1.2em in rem units */
+        margin: 0 0 1rem 0;
+        text-align: center;
+        font-family: $fancy-font;
+      }
+}
 
 
