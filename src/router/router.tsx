@@ -7,7 +7,7 @@ import App from "../App";
 import Homepage from "../pages/Homepage";
 import AdminLogin from "../pages/AdminLogin";
 import EditMenu from "../pages/EditMenu";
-import Loading from "../components/Loading";
+import Listings from "../pages/Listings";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,7 +15,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Homepage />} />
       <Route path="/sitemaster" element={<AdminLogin />} />
       <Route path="/editmenu" element={<EditMenu />}/>
-      <Route path="/listings" element={<Loading />}/>
+      <Route path="/listings" element={<Listings />}/>
     </Route>
   )
 );
