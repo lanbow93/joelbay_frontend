@@ -14,10 +14,10 @@ function ListingCard(props: ListingProps){
     const {
         brand,
         category,
-        condition,
-        createdAt,
+        // condition,
+        // createdAt,
         description,
-        id,
+        // id,
         imageUrl,
         name,
         price,
