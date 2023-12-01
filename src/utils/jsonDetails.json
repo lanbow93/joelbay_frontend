@@ -1,4 +1,36 @@
 {
     "navLinks": [["Home","/"],["Listings","/listings"],["Specials","/specials"],["Contact Us","/contact"]],
-    "loadingStrings": ["Welcome to React", "Smooth transitions", "Array of strings"]
+    "loadingStrings": [
+        "Searching for hidden treasures...",
+        "Polishing instruments for perfection...",
+        "Counting collectibles one by one...",
+        "Crafting a symphony of pixels...",
+        "Assembling the quirkiness...",
+        "Tickling the server's funny bone...",
+        "Unboxing joy and excitement...",
+        "Embracing the chaos of randomness...",
+        "Adjusting the virtual spotlight...",
+        "Summoning the coding muses...",
+        "Preparing for intergalactic sales...",
+        "Dusting off rare finds...",
+        "Whispering sweet nothings to the pixels...",
+        "Calibrating the whimsy levels...",
+        "Unlocking the secrets of loading screens...",
+        "Synchronizing with the cosmic database...",
+        "Consulting the mystical loading oracle...",
+        "Rehearsing the loading dance...",
+        "Brewing a potion of loading magic...",
+        "Entertaining loading gnomes...",
+        "Plotting world domination one pixel at a time...",
+        "Sending a virtual hug while loading...",
+        "Riding the waves of loading serenity...",
+        "Juggling ones and zeros with style...",
+        "Wrestling with the loading kraken...",
+        "Tick-tock goes the loading clock...",
+        "Harnessing the loading power of friendship...",
+        "Embarking on a loading adventure...",
+        "Finding the loading needle in the digital haystack...",
+        "Building castles in the loading clouds...",
+        "Firing up the engines of loading awesomeness..."
+      ]
 }

@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ErrorScreen from '../components/ErrorScreen'
-import LoadingScreen from '../components/LoadingScreen'
 import url from '../router/url'
+import Loading from '../components/Loading'
 
 function AdminLogin() {
     const [isLoading, setIsLoading] = useState(false)
@@ -74,7 +74,7 @@ function AdminLogin() {
                 </div>
 
                 {isLoading ? (
-                    <LoadingScreen />
+                    <Loading />
                 ) : (
                     <form onSubmit={handleSubmission}>
                         <h2>Admin Login</h2>

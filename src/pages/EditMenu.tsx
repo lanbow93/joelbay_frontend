@@ -2,7 +2,7 @@ import { ChangeEvent,useState } from "react"
 import { useNavigate } from "react-router-dom"
 import url from "../router/url"
 import ErrorScreen from "../components/ErrorScreen"
-import LoadingScreen from "../components/LoadingScreen"
+import Loading from "../components/Loading"
 
 interface InstrumentData {
     name: string;
@@ -106,7 +106,7 @@ interface InstrumentData {
                 </div>
 
                 {isLoading ? (
-                    <LoadingScreen />
+                    <Loading />
                 ) : (
                     <form onSubmit={handleSubmission} encType="multipart/form-data">
     <h2>Instrument Details</h2>
