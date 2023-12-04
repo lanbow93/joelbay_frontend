@@ -19,7 +19,6 @@ function Listings(){
         
         
         return () => {
-          // Cleanup logic goes here
         };
       }, []);
       
@@ -38,12 +37,10 @@ function Listings(){
             })
             if (response.ok) {
                 const listingInformation = await response.json()
-                console.log(listingInformation)
                 setListingData(listingInformation);
                 setIsLoading(false);
             } else {
                 const data = await response.json()
-                console.log(data);
                 const { error, message, status } = data
                 setErrorData({
                     errorMessage: message,
@@ -76,7 +73,7 @@ function Listings(){
                 ) : (<>
                 <h1>Listings Page</h1>
                 <div className="listingDisplay">
-                    {listingData.map((listing: any) => <ListingCard {...listing} />)}
+                    {listingData.map((listing: any) => <ListingCard {...listing} key={listing.id + listing.name}/>)}
                 </div> 
                 </>
                 

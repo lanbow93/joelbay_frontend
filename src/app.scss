@@ -300,12 +300,14 @@ $bgOffset: #526070;
         height: 8rem;
         align-self: center;
         .product-image {
-            max-width: 10rem; /* 100px in rem units */
-            max-height: 8rem; /* 100px in rem units */
+            max-width: 10rem; 
+            max-height: 8rem;
             object-fit: contain;
 
             justify-self: center;
-          }
+        }
+
+        
       }
       
       
