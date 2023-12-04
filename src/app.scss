@@ -294,7 +294,7 @@ $bgOffset: #526070;
         flex-direction: column;
       }
       
-      .cardImage{
+    .cardImage{
         display: flex;
         
         height: 8rem;
@@ -303,12 +303,17 @@ $bgOffset: #526070;
             max-width: 10rem; 
             max-height: 8rem;
             object-fit: contain;
-
             justify-self: center;
-        }
+        }        
+    }
+    .cardImage:hover{
+        height: 12rem;
 
-        
-      }
+        .product-image:hover{
+            max-width: 14rem; 
+            max-height: 12rem;
+        }
+    }
       
       
       
