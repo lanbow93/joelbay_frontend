@@ -15,7 +15,7 @@ interface InstrumentData {
     condition: string
 }
 
-function EditMenu() {
+function CreateMenu() {
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [errorData, setErrorData] = useState({
@@ -94,7 +94,7 @@ function EditMenu() {
 
     return (
         <>
-            <div className="editMenu">
+            <div className="createMenu">
                 <div
                     className={`errorModal ${isModalActive ? 'showError' : ''}`}
                 >
@@ -194,4 +194,4 @@ function EditMenu() {
     )
 }
 
-export default EditMenu
+export default CreateMenu
