@@ -1,5 +1,10 @@
 {
-    "navLinks": [["Home","/"],["Listings","/listings"],["Specials","/specials"],["Contact Us","/contact"]],
+    "navLinks": [
+        ["Home", "/"],
+        ["Listings", "/listings"],
+        ["Specials", "/specials"],
+        ["Contact Us", "/contact"]
+    ],
     "loadingStrings": [
         "Searching for hidden treasures...",
         "Polishing instruments for perfection...",
@@ -32,5 +37,5 @@
         "Finding the loading needle in the digital haystack...",
         "Building castles in the loading clouds...",
         "Firing up the engines of loading awesomeness..."
-      ]
+    ]
 }

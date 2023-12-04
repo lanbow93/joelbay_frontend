@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-function Footer(){
-    return <div className="footer">
-        <Link to="/sitemaster">SiteMaster</Link>
-    </div>
+function Footer() {
+    return (
+        <div className="footer">
+            <Link to="/sitemaster">SiteMaster</Link>
+        </div>
+    )
 }
 
-export default Footer;
+export default Footer

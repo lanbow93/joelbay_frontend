@@ -37,7 +37,7 @@ function AdminLogin() {
                 navigate('/editmenu')
             } else {
                 const data = await response.json()
-                console.log(data);
+                console.log(data)
                 const { error, message, status } = data
                 setErrorData({
                     errorMessage: message,
@@ -60,7 +60,6 @@ function AdminLogin() {
 
     return (
         <>
-        
             <div className="loginPage">
                 <div
                     className={`errorModal ${isModalActive ? 'showError' : ''}`}

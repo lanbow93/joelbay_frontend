@@ -6,7 +6,6 @@ interface errorProps {
 }
 
 function ErrorScreen(props: errorProps) {
-
     return (
         <div className="errorScreen">
             <h1>{props.status}</h1>

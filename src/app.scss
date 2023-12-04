@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 $fancy-font: 'Agbalumo', sans-serif;
-$bgcolor: #232F3E;
+$bgcolor: #232f3e;
 $bgOffset: #526070;
 
 * {
@@ -8,46 +8,40 @@ $bgOffset: #526070;
     padding: 0;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
-.underline{
+.underline {
     text-decoration: underline;
 }
 
-
-
 @media screen and (max-width: 48rem) {
-    .navigation{
-        .container{
+    .navigation {
+        .container {
             display: inline-block !important;
         }
         .closed {
             max-height: 0;
             overflow: hidden;
             transition: max-height 1s ease-out;
-          }
-          
-        .open {
-        max-height: 200px; /* Adjust this value based on your content */
-        transition: max-height 1s ease-in;
         }
-          
-    }
 
+        .open {
+            max-height: 200px; /* Adjust this value based on your content */
+            transition: max-height 1s ease-in;
+        }
+    }
 
     .loadingScreen img {
         max-width: 80%;
     }
-    .loginPage, .editMenu{
-        form{
+    .loginPage,
+    .editMenu {
+        form {
             grid-template-columns: 1fr !important;
-        
         }
     }
 }
-
-
 
 .navigation {
     background-color: $bgcolor;
@@ -55,17 +49,19 @@ $bgOffset: #526070;
     font-family: $fancy-font;
     h1 {
         text-align: center;
-        padding: .5rem;
+        padding: 0.5rem;
     }
 
     .container {
         display: none;
         cursor: pointer;
         position: absolute;
-        top: .4rem;
+        top: 0.4rem;
         right: 1rem;
 
-        .bar1, .bar2, .bar3 {
+        .bar1,
+        .bar2,
+        .bar3 {
             width: 35px;
             height: 5px;
             background-color: white;
@@ -87,9 +83,8 @@ $bgOffset: #526070;
     }
 
     .navOptions {
-        
-        ul{
-            display:flex;
+        ul {
+            display: flex;
             justify-content: space-around;
             list-style-type: none;
             padding-bottom: 1rem;
@@ -97,8 +92,8 @@ $bgOffset: #526070;
         a {
             text-decoration: none;
             color: white;
-            margin-bottom: .5rem;
-            padding-bottom: .25rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
             overflow: hidden;
             position: relative;
 
@@ -111,7 +106,10 @@ $bgOffset: #526070;
                 height: 0.1em;
                 background-color: white;
                 opacity: 0;
-                transition: width 300ms, opacity 300ms, transform 1000ms;
+                transition:
+                    width 300ms,
+                    opacity 300ms,
+                    transform 1000ms;
                 transform: translateX(-50%);
             }
 
@@ -124,12 +122,11 @@ $bgOffset: #526070;
     }
 }
 
-.footer{
+.footer {
     display: flex;
     justify-content: end;
     margin: 1rem;
 }
-
 
 // Mixin for common styles
 @mixin button-styles {
@@ -139,90 +136,91 @@ $bgOffset: #526070;
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
     color: white;
-  }
-  
-  .loading{
+}
+
+.loading {
     display: flex;
     justify-content: center;
     font-size: 2rem;
     padding: 10rem;
-  }
-   
-  .loadingScreen img {
+}
+
+.loadingScreen img {
     margin-top: 2rem;
     min-width: 80%;
     border-radius: 30rem;
     justify-self: center;
 }
-  .errorModal {
+.errorModal {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.623);
     display: none;
-  }
-  
-  .showError {
+}
+
+.showError {
     display: flex;
     justify-content: center; // Center horizontally
     align-items: center; // Center vertically
-  }
-  
-  .errorScreen {
+}
+
+.errorScreen {
     background-color: grey;
     position: absolute;
     padding: 1rem;
     justify-self: center;
-   
-  
+
     h1 {
-      color: white;
-      text-shadow: red 1px 1px;
-      margin-bottom: 0.5rem;
+        color: white;
+        text-shadow: red 1px 1px;
+        margin-bottom: 0.5rem;
     }
-  
+
     h2 {
-      color: white;
-      margin-bottom: 1rem;
+        color: white;
+        margin-bottom: 1rem;
     }
-  
+
     button {
-      @include button-styles; // Using the mixin
+        @include button-styles; // Using the mixin
     }
-  }
-.homepage{
+}
+.homepage {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    h1{
-        
+    h1 {
         font-family: $fancy-font;
     }
-    .subtitle{
-        font-family: $fancy-font;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-    h3{
+    .subtitle {
         font-family: $fancy-font;
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
-    .about{
+    h3 {
+        font-family: $fancy-font;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .about {
         margin-left: 1rem;
         margin-right: 1rem;
         max-width: 50rem;
         background-color: $bgcolor;
         border-radius: 1rem;
         color: white;
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-        p{
+        box-shadow:
+            rgba(17, 17, 26, 0.1) 0px 8px 24px,
+            rgba(17, 17, 26, 0.1) 0px 16px 56px,
+            rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        p {
             margin: 1rem;
             font-size: 1.25rem;
         }
     }
 
-    a{
+    a {
         text-decoration: none;
         color: white;
         background-color: $bgcolor;
@@ -232,18 +230,19 @@ $bgOffset: #526070;
         font-family: $fancy-font;
         font-size: 1.25rem;
     }
-    a:hover{
-        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    a:hover {
+        transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
         background-color: $bgOffset;
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
         transform: translateY(-2px);
     }
-    a:active{
+    a:active {
         box-shadow: none;
         transform: translateY(0);
     }
 }
-.loginPage, .editMenu {
+.loginPage,
+.editMenu {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -256,10 +255,10 @@ $bgOffset: #526070;
             text-align: center;
             margin-bottom: 1rem;
         }
-        label{
+        label {
             font-size: 1.25rem;
         }
-        input{
+        input {
             margin-bottom: 1rem;
             font-size: 1.25rem;
         }
@@ -267,62 +266,60 @@ $bgOffset: #526070;
             grid-column: span 2;
             font-size: 1.25rem;
         }
-        textarea{
+        textarea {
             margin-bottom: 1rem;
         }
     }
 }
 
-
-
-.listings{
-    h1{
+.listings {
+    h1 {
         text-align: center;
     }
-    .listingDisplay{
+    .listingDisplay {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
     }
     .listingCard {
         width: 20rem;
-        border: 10px solid $bgOffset; /* 1px in rem units */
+        border: 10px solid $bgOffset;
         border-radius: 1rem;
-        margin: 10px; /* 10px in rem units */
-        padding: 10px; /* 10px in rem units */
+        margin: 10px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
-      }
-      
-    .cardImage{
+    }
+
+    .cardImage {
         display: flex;
-        
+
         height: 8rem;
         align-self: center;
         .product-image {
-            max-width: 10rem; 
+            max-width: 10rem;
             max-height: 8rem;
             object-fit: contain;
             justify-self: center;
-        }        
+        }
     }
-    .cardImage:hover{
+    .cardImage:hover {
         height: 12rem;
 
-        .product-image:hover{
-            max-width: 14rem; 
+        .product-image:hover {
+            max-width: 14rem;
             max-height: 12rem;
         }
     }
-      
-      
-      
-      .product-name {
-        font-size: 1.2rem; /* 1.2em in rem units */
-        margin: 0 0 1rem 0;
-        text-align: center;
-        font-family: $fancy-font;
-      }
+    .product-details {
+        display: flex;
+        flex-direction: column;
+
+        .product-name {
+            font-size: 1.2rem;
+            margin: 0 0 1rem 0;
+            text-align: center;
+            font-family: $fancy-font;
+        }
+    }
 }
-
-
