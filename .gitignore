@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-/home/lanbow93/Joel_bay/frontend-joelbay/src/router/url.ts
+/src/router/url.ts
