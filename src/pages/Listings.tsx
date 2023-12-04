@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
-import url from '../router/url'
 import ListingCard from '../components/ListingCard'
+import { listingCall } from '../utils/apiCalls'
 
 function Listings() {
     const [isLoading, setIsLoading] = useState(false)
@@ -13,45 +13,30 @@ function Listings() {
         errorAdditional: '',
     })
     const [listingData, setListingData] = useState([])
-
     useEffect(() => {
         getListings()
-
         return () => {}
     }, [])
 
     const getListings = async () => {
         setIsLoading(true)
-        if (listingData.length != 0) {
-            setIsLoading(false)
-            return
-        }
-        try {
-            const response = await fetch(url + '/instruments', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+        const response: any = await listingCall()
+        setIsLoading(false)
+        if (response.data) {
+            setListingData(response.data)
+        } else {
+            const { status, message, error } = response.error
+            setErrorData({
+                errorStatus: status,
+                errorMessage: message,
+                errorAdditional: error,
             })
-            if (response.ok) {
-                const listingInformation = await response.json()
-                setListingData(listingInformation)
-                setIsLoading(false)
-            } else {
-                const data = await response.json()
-                const { error, message, status } = data
-                setErrorData({
-                    errorMessage: message,
-                    errorAdditional: status,
-                    errorStatus: error,
-                })
-                setIsModalActive(true)
-            }
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
+            setIsModalActive(true)
         }
+    }
+
+    if (isLoading) {
+        return <Loading />
     }
 
     return (
@@ -64,22 +49,12 @@ function Listings() {
                     closeModal={setIsModalActive}
                 />
             </div>
-
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <h1>Listings Page</h1>
-                    <div className="listingDisplay">
-                        {listingData.map((listing: any) => (
-                            <ListingCard
-                                {...listing}
-                                key={listing.id + listing.name}
-                            />
-                        ))}
-                    </div>
-                </>
-            )}
+            <h1>Listings Page</h1>
+            <div className="listingDisplay">
+                {listingData.map((listing: any) => (
+                    <ListingCard {...listing} key={listing.id + listing.name} />
+                ))}
+            </div>
         </div>
     )
 }

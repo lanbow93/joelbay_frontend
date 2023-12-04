@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ErrorScreen from '../components/ErrorScreen'
-import url from '../router/url'
 import Loading from '../components/Loading'
+import { adminLogin } from '../utils/apiCalls'
 
 function AdminLogin() {
     const [isLoading, setIsLoading] = useState(false)
@@ -23,33 +23,18 @@ function AdminLogin() {
     ) => {
         event.preventDefault()
         setIsLoading(true)
-        try {
-            const response = await fetch(url + '/admin/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-                body: JSON.stringify(userData),
+        const response: any = await adminLogin(JSON.stringify(userData))
+        setIsLoading(false)
+        if (response.data) {
+            navigate('/editmenu')
+        } else {
+            const { status, message, error } = response.error
+            setErrorData({
+                errorStatus: status,
+                errorMessage: message,
+                errorAdditional: error,
             })
-
-            if (response.ok) {
-                navigate('/editmenu')
-            } else {
-                const data = await response.json()
-                console.log(data)
-                const { error, message, status } = data
-                setErrorData({
-                    errorMessage: message,
-                    errorAdditional: status,
-                    errorStatus: error,
-                })
-                setIsModalActive(true)
-            }
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
+            setIsModalActive(true)
         }
     }
 

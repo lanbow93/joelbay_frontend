@@ -296,19 +296,22 @@ $bgOffset: #526070;
 
         height: 8rem;
         align-self: center;
+        transition: ease-in-out 700ms;
         .product-image {
             max-width: 10rem;
             max-height: 8rem;
             object-fit: contain;
             justify-self: center;
+            transition: ease-in-out 700ms;
         }
     }
     .cardImage:hover {
         height: 12rem;
-
+        transition: ease-in-out 700ms;
         .product-image:hover {
             max-width: 14rem;
             max-height: 12rem;
+            transition: ease-in-out 700ms;
         }
     }
     .product-details {
@@ -320,6 +323,15 @@ $bgOffset: #526070;
             margin: 0 0 1rem 0;
             text-align: center;
             font-family: $fancy-font;
+        }
+        a {
+            align-self: end;
+            font-size: 1.1rem;
+            font-family: $fancy-font;
+        }
+        a:hover {
+            text-decoration: none;
+            color: blue;
         }
     }
 }
