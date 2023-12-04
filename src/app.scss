@@ -36,7 +36,7 @@ $bgOffset: #526070;
         max-width: 80%;
     }
     .loginPage,
-    .editMenu {
+    .createMenu {
         form {
             grid-template-columns: 1fr !important;
         }
@@ -242,7 +242,7 @@ $bgOffset: #526070;
     }
 }
 .loginPage,
-.editMenu {
+.createMenu {
     display: flex;
     justify-content: center;
     text-align: center;
