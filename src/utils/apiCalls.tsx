@@ -15,11 +15,9 @@ export async function listingCall() {
             },
         })
         if (response.ok) {
-            const listingInformation = await response.json()
-            return { data: listingInformation }
+            return { data: await response.json() }
         } else {
-            const errorData: errorResponse = await response.json()
-            return { error: errorData }
+            return { error: await response.json() }
         }
     } catch (error) {
         return { error }
@@ -38,11 +36,27 @@ export async function adminLogin(userData: string) {
         })
 
         if (response.ok) {
-            return { data: 'success' }
+            return { data: await response.json() }
         } else {
-            const data: errorResponse = await response.json()
-            console.log(data)
-            return { error: data }
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export async function createListing(formData: FormData) {
+    try {
+        const response = await fetch(url + '/instruments', {
+            method: 'POST',
+            credentials: 'include',
+            body: formData,
+        })
+
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
         }
     } catch (error) {
         return { error }

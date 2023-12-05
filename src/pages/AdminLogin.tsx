@@ -26,7 +26,7 @@ function AdminLogin() {
         const response: any = await adminLogin(JSON.stringify(userData))
         setIsLoading(false)
         if (response.data) {
-            navigate('/editmenu')
+            navigate('/createMenu')
         } else {
             const { status, message, error } = response.error
             setErrorData({
