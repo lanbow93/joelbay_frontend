@@ -104,6 +104,7 @@ function SingleListing() {
                                 alt={`${listingData.name}`}
                                 style={{ transform: transformValue }}
                             />
+                            <p>**Hover to zoom**</p>
                         </div>
                         <div className="listingDetails">
                             <div>
