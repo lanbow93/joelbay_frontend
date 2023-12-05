@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import url from '../router/url'
 import ErrorScreen from '../components/ErrorScreen'
 import Loading from '../components/Loading'
+import { createListing } from '../utils/apiCalls'
 
 interface InstrumentData {
     name: string
@@ -65,30 +65,19 @@ function CreateMenu() {
         Object.entries(instrumentData).forEach(([key, value]) => {
             formData.append(key, value)
         })
-
-        try {
-            const response = await fetch(url + '/instruments', {
-                method: 'POST',
-                credentials: 'include',
-                body: formData,
+        const response = await createListing(formData)
+        setIsLoading(false)
+        if (response.data) {
+            console.log(response.data)
+            navigate('/createMenu')
+        } else {
+            const { status, message, error } = response.error
+            setErrorData({
+                errorStatus: status,
+                errorMessage: message,
+                errorAdditional: error,
             })
-
-            if (response.ok) {
-                navigate('/editmenu')
-            } else {
-                const data = await response.json()
-                const { error, message, status } = data
-                setErrorData({
-                    errorMessage: message,
-                    errorAdditional: status,
-                    errorStatus: error,
-                })
-                setIsModalActive(true)
-            }
-        } catch (error) {
-            console.error('Error during submission:', error)
-        } finally {
-            setIsLoading(false)
+            setIsModalActive(true)
         }
     }
 

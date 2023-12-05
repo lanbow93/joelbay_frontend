@@ -15,34 +15,6 @@ $bgOffset: #526070;
     text-decoration: underline;
 }
 
-@media screen and (max-width: 48rem) {
-    .navigation {
-        .container {
-            display: inline-block !important;
-        }
-        .closed {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 1s ease-out;
-        }
-
-        .open {
-            max-height: 200px; /* Adjust this value based on your content */
-            transition: max-height 1s ease-in;
-        }
-    }
-
-    .loadingScreen img {
-        max-width: 80%;
-    }
-    .loginPage,
-    .createMenu {
-        form {
-            grid-template-columns: 1fr !important;
-        }
-    }
-}
-
 .navigation {
     background-color: $bgcolor;
     color: white;
@@ -137,7 +109,6 @@ $bgOffset: #526070;
     padding: 0.25rem 0.5rem;
     color: white;
 }
-
 .loading {
     display: flex;
     justify-content: center;
@@ -332,6 +303,183 @@ $bgOffset: #526070;
         a:hover {
             text-decoration: none;
             color: blue;
+        }
+    }
+}
+
+.singleListingPage {
+    display: flex;
+    justify-content: center;
+    .singleListing {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 50rem;
+        margin-top: 1rem;
+        .listingHeader {
+            background-color: #232f3e;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .listingContent {
+            .listingInfo {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                .listingImage {
+                    display: flex;
+                    justify-content: center;
+                    overflow: hidden;
+                    img {
+                        max-width: 15rem;
+                        border-radius: 8px;
+                        transition: transform 0.3s ease-in-out;
+                    }
+                    &:hover img {
+                        transform: scale(1.2);
+                    }
+                }
+
+                .listingDetails {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+
+                    div {
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+                    .listingDescription {
+                        grid-column: span 2;
+                    }
+                }
+                .contactForm {
+                    grid-column: span 2;
+                    padding: 1rem;
+
+                    form {
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            margin-bottom: 5px;
+                        }
+
+                        input,
+                        textarea {
+                            margin-bottom: 10px;
+                            padding: 10px;
+                            border-radius: 5px;
+                            border: 1px solid #ddd;
+                        }
+
+                        button {
+                            padding: 10px;
+                            background-color: #232f3e;
+                            color: #fff;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .navigation {
+        .container {
+            display: inline-block !important;
+        }
+        .closed {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-out;
+        }
+
+        .open {
+            max-height: 200px; /* Adjust this value based on your content */
+            transition: max-height 1s ease-in;
+        }
+    }
+
+    .loadingScreen img {
+        max-width: 80%;
+    }
+    .loginPage,
+    .createMenu {
+        form {
+            grid-template-columns: 1fr;
+            margin: 0 1rem 0 1rem;
+        }
+    }
+
+    .singleListingPage {
+        .singleListing {
+            width: 100%;
+            margin: 1rem 1rem 0 1rem;
+            .listingHeader {
+                padding: 10px;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .listingContent {
+                padding: 1rem;
+                .listingInfo {
+                    display: flex;
+                    flex-direction: column;
+                    .listingImage {
+                        img {
+                            max-width: 100%;
+                            border-radius: 8px;
+                        }
+                        margin-bottom: 1rem;
+                    }
+
+                    .listingDetails {
+                        display: grid;
+                        grid-template-columns: 1fr;
+
+                        div {
+                            span {
+                                font-weight: bold;
+                            }
+                            margin-bottom: 1rem;
+                        }
+                    }
+                    .contactForm {
+                        padding: 0;
+                        form {
+                            label {
+                                margin-bottom: 5px;
+                            }
+                            input,
+                            textarea {
+                                margin-bottom: 10px;
+                                padding: 10px;
+                                border-radius: 5px;
+                                border: 1px solid #ddd;
+                            }
+
+                            button {
+                                padding: 10px;
+                                background-color: #232f3e;
+                                color: #fff;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -1,14 +1,26 @@
 import url from '../router/url'
 
-interface errorResponse {
-    status: string
-    message: string
-    error: string | Object
-}
-
 export async function listingCall() {
     try {
         const response = await fetch(url + '/instruments', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export async function singleListingCall(id: string) {
+    try {
+        const response = await fetch(url + `/instruments/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +64,6 @@ export async function createListing(formData: FormData) {
             credentials: 'include',
             body: formData,
         })
-
         if (response.ok) {
             return { data: await response.json() }
         } else {
