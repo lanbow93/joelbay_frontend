@@ -1,5 +1,3 @@
-// SingleListing.js
-
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { emailSubmission, singleListingCall } from '../utils/apiCalls'
@@ -75,12 +73,10 @@ function SingleListing() {
     ) => {
         event.preventDefault()
         setIsLoading(true)
-        console.log(emailForm)
         const emailResponse = await emailSubmission(JSON.stringify(emailForm))
         setIsLoading(false)
-        if (emailResponse.data){
-
-        }else{
+        if (emailResponse.data) {
+        } else {
             const { status, message, error } = emailResponse.error
             setErrorData({
                 errorStatus: status,
@@ -89,8 +85,6 @@ function SingleListing() {
             })
             setIsModalActive(true)
         }
-
-
     }
 
     const getSingleListing = async () => {
@@ -103,7 +97,7 @@ function SingleListing() {
                 ...emailForm,
                 imageUrl: listingData.imageUrl,
                 itemName: listingData.name,
-              });
+            })
         } else {
             const { status, message, error } = response.error
             setErrorData({

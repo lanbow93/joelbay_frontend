@@ -84,7 +84,7 @@ export async function emailSubmission(emailForm: string) {
             body: emailForm,
         })
         if (response.ok) {
-            return {data: 'success'}
+            return { data: 'success' }
         } else {
             return await response.json()
         }
