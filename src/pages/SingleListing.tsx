@@ -1,8 +1,8 @@
 // SingleListing.js
 
-import React, { useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { singleListingCall } from '../utils/apiCalls'
+import { emailSubmission, singleListingCall } from '../utils/apiCalls'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 import { dateConverter } from '../utils/SharedFunctions'
@@ -30,6 +30,15 @@ function SingleListing() {
         updatedAt: '',
     })
 
+    const [emailForm, setEmailForm] = useState({
+        imageUrl: '',
+        itemName: '',
+        link: window.location.href,
+        name: '',
+        email: '',
+        message: '',
+    })
+
     const [transformValue, setTransformValue] = useState('scale(1)')
 
     const handleMouseMove = (event: React.MouseEvent) => {
@@ -39,8 +48,8 @@ function SingleListing() {
         const y = (event.clientY - top) / height
 
         const scale = 2
-        const offsetX = (scale - 1) * (0.5 - x);
-        const offsetY = (scale - 1) * (0.5 - y);
+        const offsetX = (scale - 1) * (0.5 - x)
+        const offsetY = (scale - 1) * (0.5 - y)
 
         setTransformValue(
             `scale(${scale}) translate(${offsetX * 100}%, ${offsetY * 100}%)`
@@ -56,12 +65,45 @@ function SingleListing() {
         return () => {}
     }, [])
 
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target
+        setEmailForm({ ...emailForm, [name]: value })
+    }
+
+    const handleFormSubmission = async (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault()
+        setIsLoading(true)
+        console.log(emailForm)
+        const emailResponse = await emailSubmission(JSON.stringify(emailForm))
+        setIsLoading(false)
+        if (emailResponse.data){
+
+        }else{
+            const { status, message, error } = emailResponse.error
+            setErrorData({
+                errorStatus: status,
+                errorMessage: message,
+                errorAdditional: error,
+            })
+            setIsModalActive(true)
+        }
+
+
+    }
+
     const getSingleListing = async () => {
         setIsLoading(true)
         const response = await singleListingCall(id || '0')
         setIsLoading(false)
         if (response.data) {
             setListingData(response.data[0])
+            setEmailForm({
+                ...emailForm,
+                imageUrl: listingData.imageUrl,
+                itemName: listingData.name,
+              });
         } else {
             const { status, message, error } = response.error
             setErrorData({
@@ -77,6 +119,7 @@ function SingleListing() {
     }
     return (
         <div className="singleListingPage">
+            <button className="backButton">Back</button>
             <div className="singleListing">
                 <div
                     className={`errorModal ${isModalActive ? 'showError' : ''}`}
@@ -134,16 +177,38 @@ function SingleListing() {
                             </div>
                         </div>
                         <div className="contactForm">
-                            <form>
-                                <label htmlFor="email">
-                                    Your Email Address:
-                                </label>
-                                <input type="email" id="email" required />
+                            <form onSubmit={handleFormSubmission}>
+                                <label htmlFor="name">Name:</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    onChange={handleInputChange}
+                                    value={emailForm.name}
+                                    required
+                                />
+                                <label htmlFor="email">Email Address:</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    onChange={handleInputChange}
+                                    value={emailForm.email}
+                                    required
+                                />
                                 <label htmlFor="message">Inquiry:</label>
                                 <textarea
                                     id="message"
                                     rows={4}
                                     required
+                                    onChange={(event) =>
+                                        setEmailForm({
+                                            ...emailForm,
+                                            message: event.target.value,
+                                        })
+                                    }
+                                    name="message"
+                                    value={emailForm.message}
                                 ></textarea>
                                 <button type="submit">Send</button>
                             </form>

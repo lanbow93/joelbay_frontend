@@ -73,3 +73,22 @@ export async function createListing(formData: FormData) {
         return { error }
     }
 }
+
+export async function emailSubmission(emailForm: string) {
+    try {
+        const response = await fetch(url + '/contact/iteminquiry', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: emailForm,
+        })
+        if (response.ok) {
+            return {data: 'success'}
+        } else {
+            return await response.json()
+        }
+    } catch (error) {
+        return { error }
+    }
+}
