@@ -21,7 +21,7 @@ function SingleListing() {
         createdAt: '',
         description: '',
         id: 0,
-        imageUrl: '',
+        imageUrls: [],
         name: '',
         price: '',
         quantityAvailable: 0,
@@ -95,7 +95,7 @@ function SingleListing() {
             setListingData(response.data[0])
             setEmailForm({
                 ...emailForm,
-                imageUrl: listingData.imageUrl,
+                imageUrl: listingData.imageUrls[0],
                 itemName: listingData.name,
             })
         } else {
@@ -113,7 +113,9 @@ function SingleListing() {
     }
     return (
         <div className="singleListingPage">
-            <button className="backButton">Back</button>
+            <div className="backButton">
+                <button className="backButton">Back</button>
+            </div>
             <div className="singleListing">
                 <div
                     className={`errorModal ${isModalActive ? 'showError' : ''}`}
@@ -137,7 +139,7 @@ function SingleListing() {
                             style={{ overflow: 'hidden' }}
                         >
                             <img
-                                src={listingData.imageUrl}
+                                src={listingData.imageUrls[0]}
                                 alt={`${listingData.name}`}
                                 style={{ transform: transformValue }}
                             />
