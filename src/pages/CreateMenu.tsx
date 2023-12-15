@@ -7,7 +7,7 @@ import { createListing } from '../utils/apiCalls'
 interface InstrumentData {
     name: string
     description: string
-    image: File | null | any
+    images: File[] | null | any
     price: number | any
     quantityAvailable: number | any
     brand: string
@@ -27,7 +27,7 @@ function CreateMenu() {
     const [instrumentData, setInstrumentData] = useState<InstrumentData>({
         name: '',
         description: '',
-        image: null,
+        images: null,
         price: 0,
         quantityAvailable: 0,
         brand: '',
@@ -41,8 +41,8 @@ function CreateMenu() {
         const files = event.target.files
 
         if (files && files.length > 0) {
-            const file = files[0]
-            setInstrumentData((prevData) => ({ ...prevData, image: file }))
+            const fileList = Array.from(files)
+            setInstrumentData((prevData) => ({ ...prevData, images: fileList }))
         }
     }
 
@@ -63,7 +63,13 @@ function CreateMenu() {
 
         // Append form data
         Object.entries(instrumentData).forEach(([key, value]) => {
-            formData.append(key, value)
+            if (key === 'images') {
+                value.forEach((file: File, index: number) => {
+                    formData.append(`${key}[${index}]`, file)
+                })
+            } else {
+                formData.append(key, value)
+            }
         })
         const response = await createListing(formData)
         setIsLoading(false)
@@ -155,13 +161,14 @@ function CreateMenu() {
                         value={instrumentData.condition}
                         onChange={handleInputChange}
                     />
-                    <label>Image:</label>
+                    <label>Images:</label>
                     <input
                         required
                         type="file"
-                        name="image"
-                        id="image"
+                        name="images"
+                        id="images"
                         onChange={handleFileChange}
+                        multiple
                     />
                     <label>Description:</label>
                     <textarea
