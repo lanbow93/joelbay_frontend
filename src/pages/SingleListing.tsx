@@ -1,11 +1,12 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { emailSubmission, singleListingCall } from '../utils/apiCalls'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 import { dateConverter } from '../utils/SharedFunctions'
 
 function SingleListing() {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
@@ -113,8 +114,8 @@ function SingleListing() {
     }
     return (
         <div className="singleListingPage">
-            <div className="backButton">
-                <button className="backButton">Back</button>
+            <div className="backSection">
+                <button className="backButton" onClick={() => navigate(-1)}>Back</button>
             </div>
             <div className="singleListing">
                 <div

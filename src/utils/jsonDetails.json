@@ -2,8 +2,7 @@
     "navLinks": [
         ["Home", "/"],
         ["Listings", "/listings"],
-        ["Specials", "/specials"],
-        ["Contact Us", "/contact"]
+        ["Specials", "/specials"]
     ],
     "loadingStrings": [
         "Searching for hidden treasures...",
