@@ -7,7 +7,7 @@ interface ListingProps {
     createdAt: Date
     description: string
     id: number
-    imageUrl: string
+    imageUrls: [string]
     name: string
     price: string
     quantityAvailable: string
@@ -20,7 +20,7 @@ function ListingCard(props: ListingProps) {
         // createdAt,
         description,
         id,
-        imageUrl,
+        imageUrls,
         name,
         price,
         quantityAvailable,
@@ -28,7 +28,7 @@ function ListingCard(props: ListingProps) {
     return (
         <div className="listingCard">
             <div className="cardImage">
-                <img src={imageUrl} alt={name} className="product-image" />
+                <img src={imageUrls[0]} alt={name} className="product-image" />
             </div>
             <div className="product-details">
                 <h3 className="product-name">{name}</h3>
