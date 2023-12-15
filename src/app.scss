@@ -318,10 +318,19 @@ $bgOffset: #526070;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .backButton {
-        color: black;
-        font-family: $fancy-font;
-        padding: 1rem;
+    .backSection{
+        max-width: 50rem;
+        width: 100%;
+        margin-top: 1rem;
+        .backButton {
+            color: black;
+            font-family: $fancy-font;
+            padding: 1rem;
+            background-color: $bgOffset;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
     }
     .singleListing {
         background-color: #fff;
@@ -444,20 +453,19 @@ $bgOffset: #526070;
     }
 
     .singleListingPage {
+        .backButton{
+            margin-left: 1rem;
+            padding: 1rem 3rem 1rem 3rem  !important;
+        }
         .singleListing {
-            width: 100%;
             margin: 1rem 1rem 0 1rem;
-            .listingHeader {
-                padding: 10px;
-                font-size: 24px;
-                margin-bottom: 20px;
-            }
-
+            width: auto;
             .listingContent {
-                padding: 1rem;
                 .listingInfo {
                     display: flex;
                     flex-direction: column;
+                    padding: 0 2rem 1rem 2rem ;
+                    
                     .listingImage {
                         img {
                             max-width: 100%;
@@ -472,9 +480,9 @@ $bgOffset: #526070;
                     }
 
                     .listingDetails {
-                        display: grid;
-                        grid-template-columns: 1fr;
-
+                        display: flex;
+                        flex-direction: column;
+                        
                         div {
                             span {
                                 font-weight: bold;
