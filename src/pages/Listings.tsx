@@ -54,12 +54,12 @@ function Listings() {
             <h1>Listings Page</h1>
             <div className="filter">
                 <h2>Filter Options</h2>
-                <p>Category</p>
-                {uniqueObjectArrayList(listingData, "category").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
-                <p>Brand</p>
-                {uniqueObjectArrayList(listingData, "brand").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
-                <p>Condition</p>
-                {uniqueObjectArrayList(listingData, "condition").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
+                <p className='bold underline'>Category</p>
+                <ul className="filterOptions">{uniqueObjectArrayList(listingData, "category").map((option: string) => <li><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></ li>)}</ul>
+                <p className='bold underline'>Brand</p>
+                <ul className="filterOptions">{uniqueObjectArrayList(listingData, "brand").map((option: string) => <li><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></ li>)}</ul>
+                <p className='bold underline'>Condition</p>
+                <ul className="filterOptions">{uniqueObjectArrayList(listingData, "condition").map((option: string) => <li><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></ li>)}</ul>
             </div>
             <div className="listingDisplay">
                 {listingData.map((listing: any) => (
