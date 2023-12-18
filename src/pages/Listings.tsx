@@ -38,7 +38,7 @@ function Listings() {
     if (isLoading) {
         return <Loading />
     }
-
+    
     return (
         <div className="listings">
             <div className={`errorModal ${isModalActive ? 'showError' : ''}`}>
@@ -50,6 +50,9 @@ function Listings() {
                 />
             </div>
             <h1>Listings Page</h1>
+            <div className="filter">
+                <p>Filter</p>
+            </div>
             <div className="listingDisplay">
                 {listingData.map((listing: any) => (
                     <ListingCard {...listing} key={listing.id + listing.name} />

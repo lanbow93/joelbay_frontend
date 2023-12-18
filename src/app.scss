@@ -14,7 +14,6 @@ $bgOffset: #526070;
 .underline {
     text-decoration: underline;
 }
-
 .navigation {
     background-color: $bgcolor;
     color: white;
@@ -249,8 +248,18 @@ $bgOffset: #526070;
 }
 
 .listings {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    
+    .filter{
+        border: 6px solid $bgOffset;
+        border-radius: 1rem;
+        margin: 10px;
+        padding: 10px;
+    }
     h1 {
         text-align: center;
+        grid-column: span 2;
     }
     .listingDisplay {
         display: flex;
@@ -450,6 +459,9 @@ $bgOffset: #526070;
             grid-template-columns: 1fr;
             margin: 0 1rem 0 1rem;
         }
+    }
+    .listings{
+        display: inline-block;
     }
 
     .singleListingPage {
