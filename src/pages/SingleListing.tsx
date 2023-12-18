@@ -115,7 +115,9 @@ function SingleListing() {
     return (
         <div className="singleListingPage">
             <div className="backSection">
-                <button className="backButton" onClick={() => navigate(-1)}>Back</button>
+                <button className="backButton" onClick={() => navigate(-1)}>
+                    Back
+                </button>
             </div>
             <div className="singleListing">
                 <div

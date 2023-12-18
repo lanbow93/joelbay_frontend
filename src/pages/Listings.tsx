@@ -3,6 +3,7 @@ import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 import ListingCard from '../components/ListingCard'
 import { listingCall } from '../utils/apiCalls'
+import { uniqueObjectArrayList } from '../utils/SharedFunctions'
 
 function Listings() {
     const [isLoading, setIsLoading] = useState(false)
@@ -21,6 +22,7 @@ function Listings() {
     const getListings = async () => {
         setIsLoading(true)
         const response: any = await listingCall()
+        
         setIsLoading(false)
         if (response.data) {
             setListingData(response.data)
@@ -38,7 +40,7 @@ function Listings() {
     if (isLoading) {
         return <Loading />
     }
-    
+    console.log(uniqueObjectArrayList(listingData, "category"))
     return (
         <div className="listings">
             <div className={`errorModal ${isModalActive ? 'showError' : ''}`}>
@@ -51,7 +53,13 @@ function Listings() {
             </div>
             <h1>Listings Page</h1>
             <div className="filter">
-                <p>Filter</p>
+                <h2>Filter Options</h2>
+                <p>Category</p>
+                {uniqueObjectArrayList(listingData, "category").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
+                <p>Brand</p>
+                {uniqueObjectArrayList(listingData, "brand").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
+                <p>Condition</p>
+                {uniqueObjectArrayList(listingData, "condition").map((option: string) => <><input type="checkbox" name={option} id={option}/><label htmlFor={option}>{option}</label></>)}
             </div>
             <div className="listingDisplay">
                 {listingData.map((listing: any) => (
