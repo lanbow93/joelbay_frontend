@@ -252,6 +252,7 @@ $bgOffset: #526070;
     grid-template-columns: 1fr 5fr;
 
     .filter {
+        min-width: 8rem;
         border: 6px solid $bgOffset;
         border-radius: 1rem;
         margin: 10px;
@@ -260,12 +261,12 @@ $bgOffset: #526070;
             text-align: center;
             text-decoration: underline;
         }
-        p{
-            margin-bottom: .5rem;
+        p {
+            margin-bottom: 0.5rem;
         }
-        input{
+        input {
             margin-right: 1rem;
-            margin-bottom: .5rem;
+            margin-bottom: 0.5rem;
         }
     }
     h1 {
