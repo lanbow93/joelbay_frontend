@@ -401,33 +401,33 @@ $bgOffset: #526070;
                     }
                 }
 
-                .imagePageIcon{
+                .imagePageIcon {
                     display: flex;
                     z-index: 2;
                     background-color: white;
                     width: 100%;
                     justify-content: center;
-                    p{
+                    p {
                         font-size: 2rem;
-                        color:$bgOffset
+                        color: $bgOffset;
                     }
                 }
-                .imageControl{
+                .imageControl {
                     width: 100%;
                     display: flex;
                     justify-content: space-around;
                     z-index: 2;
                     background-color: white;
-                    button{
+                    button {
                         font-size: 1.5rem;
-                        padding: .1rem 2rem;
+                        padding: 0.1rem 2rem;
                         background-color: $bgOffset;
                         color: white;
                         font-weight: bold;
-                        margin-bottom: .3rem;
+                        margin-bottom: 0.3rem;
                     }
                 }
-                .hoverMessage{
+                .hoverMessage {
                     z-index: 2;
                     background-color: white;
                     width: 100%;

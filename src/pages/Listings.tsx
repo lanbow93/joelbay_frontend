@@ -28,7 +28,6 @@ function Listings() {
 
     useEffect(() => {
         getListings()
-        
     }, [])
 
     const getListings = async () => {
