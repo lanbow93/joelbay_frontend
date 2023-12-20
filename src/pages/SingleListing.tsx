@@ -146,6 +146,13 @@ function SingleListing() {
                                 alt={`${listingData.name}`}
                                 style={{ transform: transformValue }}
                             />
+                            <div className="imagePageIcon">
+                                {listingData.imageUrls.map(() => <input type='radio'/> )}
+                            </div>
+                            <div className="imageControl">
+                                <button>←</button>
+                                <button>→</button>
+                            </div>
                             <p>**Hover to zoom**</p>
                         </div>
                         <div className="listingDetails">

@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 import ListingCard from '../components/ListingCard'
@@ -15,19 +15,20 @@ function Listings() {
     })
     const [listingData, setListingData] = useState([])
     type SelectedFilters = {
-        category: string[];
-        brand: string[];
-        condition: string[];
-    };
+        category: string[]
+        brand: string[]
+        condition: string[]
+    }
 
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
         category: [] as string[],
         brand: [] as string[],
-        condition: [] as string[]
+        condition: [] as string[],
     })
 
     useEffect(() => {
         getListings()
+        
     }, [])
 
     const getListings = async () => {
@@ -46,14 +47,11 @@ function Listings() {
             })
             setIsModalActive(true)
         }
-
     }
-
-    
 
     const handleCheckboxChange = (filterType: any, option: any) => {
         const updatedFilters: any = { ...selectedFilters }
-        
+
         // Toggle the option in the selectedFilters state
         const index = updatedFilters[filterType].indexOf(option)
         if (index === -1) {
@@ -65,29 +63,25 @@ function Listings() {
         // Update the state with the new selectedFilters
         setSelectedFilters(updatedFilters)
     }
-    
-    if(selectedFilters.category.length === 0 &&
-        selectedFilters.brand.length === 0 &&
-        selectedFilters.condition.length === 0){
-        setSelectedFilters({
-            category: uniqueObjectArrayList(listingData, 'category'),
-            brand: uniqueObjectArrayList(listingData, 'brand'),
-            condition: uniqueObjectArrayList(listingData, 'condition'),
-        });
-    }
     if (isLoading) {
         return <Loading />
     }
 
     const filteredListings = listingData.filter((listing: any) => {
         // Check if the listing matches the selected filters
-        const categoryFilter = selectedFilters.category.length === 0 || selectedFilters.category.includes(listing.category);
-        const brandFilter = selectedFilters.brand.length === 0 || selectedFilters.brand.includes(listing.brand);
-        const conditionFilter = selectedFilters.condition.length === 0 || selectedFilters.condition.includes(listing.condition);
-    
+        const categoryFilter =
+            selectedFilters.category.length === 0 ||
+            selectedFilters.category.includes(listing.category)
+        const brandFilter =
+            selectedFilters.brand.length === 0 ||
+            selectedFilters.brand.includes(listing.brand)
+        const conditionFilter =
+            selectedFilters.condition.length === 0 ||
+            selectedFilters.condition.includes(listing.condition)
+
         // Return true if all filters pass
-        return categoryFilter && brandFilter && conditionFilter;
-    });
+        return categoryFilter && brandFilter && conditionFilter
+    })
 
     return (
         <div className="listings">
@@ -111,8 +105,12 @@ function Listings() {
                                     type="checkbox"
                                     name={option}
                                     id={option}
-                                    checked={selectedFilters.category.includes(option)}
-                                    onChange={() => handleCheckboxChange('category', option)}
+                                    checked={selectedFilters.category.includes(
+                                        option
+                                    )}
+                                    onChange={() =>
+                                        handleCheckboxChange('category', option)
+                                    }
                                 />
                                 <label htmlFor={option}>{option}</label>
                             </li>
@@ -128,8 +126,12 @@ function Listings() {
                                     type="checkbox"
                                     name={option}
                                     id={option}
-                                    checked={selectedFilters.brand.includes(option)}
-                                    onChange={() => handleCheckboxChange('brand', option)}
+                                    checked={selectedFilters.brand.includes(
+                                        option
+                                    )}
+                                    onChange={() =>
+                                        handleCheckboxChange('brand', option)
+                                    }
                                 />
                                 <label htmlFor={option}>{option}</label>
                             </li>
@@ -145,8 +147,15 @@ function Listings() {
                                     type="checkbox"
                                     name={option}
                                     id={option}
-                                    checked={selectedFilters.condition.includes(option)}
-                                    onChange={() => handleCheckboxChange('condition', option)}
+                                    checked={selectedFilters.condition.includes(
+                                        option
+                                    )}
+                                    onChange={() =>
+                                        handleCheckboxChange(
+                                            'condition',
+                                            option
+                                        )
+                                    }
                                 />
                                 <label htmlFor={option}>{option}</label>
                             </li>
