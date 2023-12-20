@@ -37,9 +37,9 @@ function SingleListing() {
         email: '',
         message: '',
     })
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const [transformValue, setTransformValue] = useState('scale(1)')
-
+    const [transformValue, setTransformValue] = useState('scale(1)');
     const handleMouseMove = (event: React.MouseEvent) => {
         const { left, top, width, height } =
             event.currentTarget.getBoundingClientRect()
@@ -54,11 +54,9 @@ function SingleListing() {
             `scale(${scale}) translate(${offsetX * 100}%, ${offsetY * 100}%)`
         )
     }
-
     const handleMouseLeave = () => {
         setTransformValue('scale(1)')
     }
-
     useEffect(() => {
         getSingleListing()
         return () => {}
@@ -142,18 +140,18 @@ function SingleListing() {
                             style={{ overflow: 'hidden' }}
                         >
                             <img
-                                src={listingData.imageUrls[0]}
+                                src={listingData.imageUrls[currentImageIndex]}
                                 alt={`${listingData.name}`}
                                 style={{ transform: transformValue }}
                             />
                             <div className="imagePageIcon">
-                                {listingData.imageUrls.map(() => <input type='radio'/> )}
+                                {listingData.imageUrls.map((url, index) => index === currentImageIndex ? <p key={url}>•</p> : <p key={url}>◦</p>)}
                             </div>
                             <div className="imageControl">
-                                <button>←</button>
-                                <button>→</button>
+                                <button className={currentImageIndex === 0 ? "hidden": ""} onClick={()=> setCurrentImageIndex(currentImageIndex - 1)}>←</button>
+                                <button className={currentImageIndex === listingData.imageUrls.length-1 ? "hidden": ""} onClick={()=> setCurrentImageIndex(currentImageIndex + 1)}>→</button>
                             </div>
-                            <p>**Hover to zoom**</p>
+                            <p className='hoverMessage'>**Hover to zoom**</p>
                         </div>
                         <div className="listingDetails">
                             <div>

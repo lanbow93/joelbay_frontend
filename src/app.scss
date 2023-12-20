@@ -14,6 +14,9 @@ $bgOffset: #526070;
 .underline {
     text-decoration: underline;
 }
+.hidden {
+    display: none;
+}
 .navigation {
     background-color: $bgcolor;
     color: white;
@@ -386,6 +389,7 @@ $bgOffset: #526070;
 
                     img {
                         max-width: 20rem;
+                        max-height: 20rem;
                         border-radius: 8px;
                         transition: transform 0.3s ease-in-out;
                     }
@@ -395,6 +399,39 @@ $bgOffset: #526070;
                     p {
                         font-size: 0.75rem;
                     }
+                }
+
+                .imagePageIcon{
+                    display: flex;
+                    z-index: 2;
+                    background-color: white;
+                    width: 100%;
+                    justify-content: center;
+                    p{
+                        font-size: 2rem;
+                        color:$bgOffset
+                    }
+                }
+                .imageControl{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    z-index: 2;
+                    background-color: white;
+                    button{
+                        font-size: 1.5rem;
+                        padding: .1rem 2rem;
+                        background-color: $bgOffset;
+                        color: white;
+                        font-weight: bold;
+                        margin-bottom: .3rem;
+                    }
+                }
+                .hoverMessage{
+                    z-index: 2;
+                    background-color: white;
+                    width: 100%;
+                    text-align: center;
                 }
 
                 .listingDetails {
