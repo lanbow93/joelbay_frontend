@@ -5,7 +5,7 @@ import ListingCard from '../components/ListingCard'
 import { listingCall } from '../utils/apiCalls'
 import { uniqueObjectArrayList } from '../utils/SharedFunctions'
 
-function Listings() {
+function AdminListings() {
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [errorData, setErrorData] = useState({
@@ -92,7 +92,7 @@ function Listings() {
                     closeModal={setIsModalActive}
                 />
             </div>
-            <h1>Listings Page</h1>
+            <h1>Admin Page</h1>
             <div className="filter">
                 <h2>Filter Options</h2>
                 <p className="bold underline">Category</p>
@@ -164,11 +164,15 @@ function Listings() {
             </div>
             <div className="listingDisplay">
                 {filteredListings.map((listing: any) => (
-                    <ListingCard {...listing} key={listing.id + listing.name} />
+                    <ListingCard
+                        {...listing}
+                        isAdmin={true}
+                        key={listing.id + listing.name}
+                    />
                 ))}
             </div>
         </div>
     )
 }
 
-export default Listings
+export default AdminListings

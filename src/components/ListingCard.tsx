@@ -11,6 +11,7 @@ interface ListingProps {
     name: string
     price: string
     quantityAvailable: string
+    isAdmin: boolean
 }
 function ListingCard(props: ListingProps) {
     const {
@@ -24,6 +25,7 @@ function ListingCard(props: ListingProps) {
         name,
         price,
         quantityAvailable,
+        isAdmin,
     } = props
     return (
         <div className="listingCard">
@@ -47,8 +49,14 @@ function ListingCard(props: ListingProps) {
                 <p className="product-quantity">
                     <span className="bold">Available:</span> {quantityAvailable}
                 </p>
-                {/* <p className="product-created-at"><span className="bold">Posted:</span> {new Date(createdAt).toLocaleString()}</p> */}
-                <Link className="fullDetailsLink" to={`${id}?identity=${name}`}>
+                <Link
+                    className="fullDetailsLink"
+                    to={
+                        isAdmin
+                            ? `../admin/${id}?identity=${name}`
+                            : `${id}?identity=${name}`
+                    }
+                >
                     full details
                 </Link>
             </div>

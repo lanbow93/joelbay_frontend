@@ -14,7 +14,9 @@ $bgOffset: #526070;
 .underline {
     text-decoration: underline;
 }
-
+.hidden {
+    display: none;
+}
 .navigation {
     background-color: $bgcolor;
     color: white;
@@ -128,6 +130,7 @@ $bgOffset: #526070;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.623);
     display: none;
+    z-index: 3;
 }
 
 .showError {
@@ -249,8 +252,30 @@ $bgOffset: #526070;
 }
 
 .listings {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+
+    .filter {
+        min-width: 8rem;
+        border: 6px solid $bgOffset;
+        border-radius: 1rem;
+        margin: 10px;
+        padding: 10px;
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+        p {
+            margin-bottom: 0.5rem;
+        }
+        input {
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+    }
     h1 {
         text-align: center;
+        grid-column: span 2;
     }
     .listingDisplay {
         display: flex;
@@ -318,7 +343,7 @@ $bgOffset: #526070;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .backSection{
+    .backSection {
         max-width: 50rem;
         width: 100%;
         margin-top: 1rem;
@@ -365,6 +390,7 @@ $bgOffset: #526070;
 
                     img {
                         max-width: 20rem;
+                        max-height: 20rem;
                         border-radius: 8px;
                         transition: transform 0.3s ease-in-out;
                     }
@@ -374,6 +400,39 @@ $bgOffset: #526070;
                     p {
                         font-size: 0.75rem;
                     }
+                }
+
+                .imagePageIcon {
+                    display: flex;
+                    z-index: 2;
+                    background-color: white;
+                    width: 100%;
+                    justify-content: center;
+                    p {
+                        font-size: 2rem;
+                        color: $bgOffset;
+                    }
+                }
+                .imageControl {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    z-index: 2;
+                    background-color: white;
+                    button {
+                        font-size: 1.5rem;
+                        padding: 0.1rem 2rem;
+                        background-color: $bgOffset;
+                        color: white;
+                        font-weight: bold;
+                        margin-bottom: 0.3rem;
+                    }
+                }
+                .hoverMessage {
+                    z-index: 2;
+                    background-color: white;
+                    width: 100%;
+                    text-align: center;
                 }
 
                 .listingDetails {
@@ -387,6 +446,17 @@ $bgOffset: #526070;
                     }
                     .listingDescription {
                         grid-column: span 2;
+                    }
+                }
+                .editButtons {
+                    grid-column: span 2;
+                    display: flex;
+                    justify-content: space-around;
+                    button {
+                        padding: 0.5rem 1rem;
+                        margin: 1rem;
+                        background-color: $bgOffset;
+                        color: white;
                     }
                 }
                 .contactForm {
@@ -451,11 +521,14 @@ $bgOffset: #526070;
             margin: 0 1rem 0 1rem;
         }
     }
+    .listings {
+        display: inline-block;
+    }
 
     .singleListingPage {
-        .backButton{
+        .backButton {
             margin-left: 1rem;
-            padding: 1rem 3rem 1rem 3rem  !important;
+            padding: 1rem 3rem 1rem 3rem !important;
         }
         .singleListing {
             margin: 1rem 1rem 0 1rem;
@@ -464,8 +537,8 @@ $bgOffset: #526070;
                 .listingInfo {
                     display: flex;
                     flex-direction: column;
-                    padding: 0 2rem 1rem 2rem ;
-                    
+                    padding: 0 2rem 1rem 2rem;
+
                     .listingImage {
                         img {
                             max-width: 100%;
@@ -482,7 +555,7 @@ $bgOffset: #526070;
                     .listingDetails {
                         display: flex;
                         flex-direction: column;
-                        
+
                         div {
                             span {
                                 font-weight: bold;
