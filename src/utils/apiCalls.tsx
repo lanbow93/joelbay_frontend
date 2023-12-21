@@ -109,3 +109,19 @@ export async function emailSubmission(emailForm: string) {
         return { error }
     }
 }
+
+export async function deleteListing(id: number){
+    try {
+        const response = await fetch(url + '/instruments/' + id, {
+            method: 'DELETE',
+            credentials: 'include',
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    } 
+}

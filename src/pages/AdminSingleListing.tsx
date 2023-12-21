@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { singleListingCall, updateListing } from '../utils/apiCalls'
+import { deleteListing, singleListingCall, updateListing } from '../utils/apiCalls'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 
@@ -13,6 +13,7 @@ function AdminSingleListing() {
         errorMessage: '',
         errorStatus: '',
         errorAdditional: '',
+        confirmNeeded: true,
     })
     const [listingData, setListingData] = useState({
         brand: '',
@@ -39,24 +40,6 @@ function AdminSingleListing() {
     })
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-    const [transformValue, setTransformValue] = useState('scale(1)')
-    const handleMouseMove = (event: React.MouseEvent) => {
-        const { left, top, width, height } =
-            event.currentTarget.getBoundingClientRect()
-        const x = (event.clientX - left) / width
-        const y = (event.clientY - top) / height
-
-        const scale = 2
-        const offsetX = (scale - 1) * (0.5 - x)
-        const offsetY = (scale - 1) * (0.5 - y)
-
-        setTransformValue(
-            `scale(${scale}) translate(${offsetX * 100}%, ${offsetY * 100}%)`
-        )
-    }
-    const handleMouseLeave = () => {
-        setTransformValue('scale(1)')
-    }
     useEffect(() => {
         getSingleListing()
         return () => {}
@@ -93,6 +76,8 @@ function AdminSingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
+                confirmNeeded: false,
+
             })
             setIsModalActive(true)
         }
@@ -127,6 +112,7 @@ function AdminSingleListing() {
                 errorStatus: 'Success',
                 errorMessage: 'Successfully Updated',
                 errorAdditional: 'Success',
+                confirmNeeded: false
             })
             setIsModalActive(true)
         } else {
@@ -135,9 +121,29 @@ function AdminSingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
+                confirmNeeded: false
             })
             setIsModalActive(true)
         }
+    }
+    function triggerDeletion(){
+        deleteListing(listingData.id);
+        setErrorData({
+            errorStatus: "Confirm Deletion",
+            errorAdditional: `Confirm Deletion of ${listingData.name}`,
+            errorMessage: `Confirm Deletion of ${listingData.name}`,
+            confirmNeeded: false
+        })
+    }
+    function confirmDeletion(event: FormEvent){
+        event.preventDefault()
+        setErrorData({
+            errorStatus: "Confirm Deletion",
+            errorAdditional: `Confirm Deletion of ${listingData.name}`,
+            errorMessage: `Confirm Deletion of ${listingData.name}`,
+            confirmNeeded: true
+        })
+        setIsModalActive(true);
     }
 
     if (isLoading) {
@@ -159,6 +165,8 @@ function AdminSingleListing() {
                         status={errorData.errorStatus}
                         error={errorData.errorAdditional}
                         closeModal={setIsModalActive}
+                        confirmNeeded={true}
+                        confirmFunction={triggerDeletion}
                     />
                 </div>
                 <div className="listingHeader">
@@ -168,14 +176,12 @@ function AdminSingleListing() {
                     <div className="listingInfo">
                         <div
                             className="listingImage"
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={handleMouseLeave}
                             style={{ overflow: 'hidden' }}
                         >
+                            <p className='deleteImage'>X</p>
                             <img
                                 src={listingData.imageUrls[currentImageIndex]}
                                 alt={`${listingData.name}`}
-                                style={{ transform: transformValue }}
                             />
                             <div className="imagePageIcon">
                                 {listingData.imageUrls.map((url, index) =>
@@ -295,7 +301,7 @@ function AdminSingleListing() {
                             </div>
                             <div className="editButtons">
                                 <button>Update</button>
-                                <button>Delete</button>
+                                <button onClick={(event) => confirmDeletion(event)}>Delete</button>
                             </div>
                         </form>
                     </div>
