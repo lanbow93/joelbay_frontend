@@ -81,6 +81,7 @@ function SingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
+                
             })
             setIsModalActive(true)
         }
@@ -126,6 +127,8 @@ function SingleListing() {
                         status={errorData.errorStatus}
                         error={errorData.errorAdditional}
                         closeModal={setIsModalActive}
+                        confirmNeeded={false}
+                        confirmFunction={console.log}
                     />
                 </div>
                 <div className="listingHeader">
