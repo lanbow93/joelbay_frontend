@@ -130,6 +130,7 @@ $bgOffset: #526070;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.623);
     display: none;
+    z-index: 3;
 }
 
 .showError {
@@ -445,6 +446,17 @@ $bgOffset: #526070;
                     }
                     .listingDescription {
                         grid-column: span 2;
+                    }
+                }
+                .editButtons{
+                    grid-column: span 2;
+                    display: flex;
+                    justify-content: space-around;
+                    button{
+                        padding: .5rem 1rem;
+                        margin: 1rem;
+                        background-color: $bgOffset;
+                        color: white;
                     }
                 }
                 .contactForm {

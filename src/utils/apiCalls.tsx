@@ -74,6 +74,23 @@ export async function createListing(formData: FormData) {
     }
 }
 
+export async function updateListing(formData: FormData, id: number) {
+    try {
+        const response = await fetch(url + `/instruments/${id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            body: formData,
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}
+
 export async function emailSubmission(emailForm: string) {
     try {
         const response = await fetch(url + '/contact/iteminquiry', {

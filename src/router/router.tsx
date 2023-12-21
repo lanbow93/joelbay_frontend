@@ -10,6 +10,7 @@ import CreateMenu from '../pages/CreateMenu'
 import Listings from '../pages/Listings'
 import AdminListings from '../pages/AdminListings'
 import Instrument from '../pages/SingleListing'
+import AdminSingleListing from '../pages/AdminSingleListing'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
             <Route path="/specials" element={<h1>Specials Page</h1>} />
             <Route path="/sitemaster" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminListings />} />
+            <Route path="/admin/:id" element={<AdminSingleListing />} />
             <Route path="/createmenu" element={<CreateMenu />} />
         </Route>
     )
