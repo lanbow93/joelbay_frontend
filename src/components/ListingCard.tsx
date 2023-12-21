@@ -10,7 +10,7 @@ interface ListingProps {
     imageUrls: [string]
     name: string
     price: string
-    quantityAvailable: string,
+    quantityAvailable: string
     isAdmin: boolean
 }
 function ListingCard(props: ListingProps) {
@@ -25,7 +25,7 @@ function ListingCard(props: ListingProps) {
         name,
         price,
         quantityAvailable,
-        isAdmin
+        isAdmin,
     } = props
     return (
         <div className="listingCard">
@@ -49,7 +49,14 @@ function ListingCard(props: ListingProps) {
                 <p className="product-quantity">
                     <span className="bold">Available:</span> {quantityAvailable}
                 </p>
-                <Link className="fullDetailsLink" to={ isAdmin ? `../admin/${id}?identity=${name}` : `${id}?identity=${name}`}>
+                <Link
+                    className="fullDetailsLink"
+                    to={
+                        isAdmin
+                            ? `../admin/${id}?identity=${name}`
+                            : `${id}?identity=${name}`
+                    }
+                >
                     full details
                 </Link>
             </div>

@@ -164,7 +164,11 @@ function AdminListings() {
             </div>
             <div className="listingDisplay">
                 {filteredListings.map((listing: any) => (
-                    <ListingCard {...listing} isAdmin={true} key={listing.id + listing.name} />
+                    <ListingCard
+                        {...listing}
+                        isAdmin={true}
+                        key={listing.id + listing.name}
+                    />
                 ))}
             </div>
         </div>

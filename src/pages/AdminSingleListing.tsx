@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { singleListingCall, updateListing } from '../utils/apiCalls'
 import Loading from '../components/Loading'
-import ErrorScreen from '../components/ErrorScreen'                     
+import ErrorScreen from '../components/ErrorScreen'
 
 function AdminSingleListing() {
     const navigate = useNavigate()
@@ -109,8 +109,8 @@ function AdminSingleListing() {
         // Append form data
         Object.entries(listingData).forEach(([key, value]: any) => {
             if (key === 'images') {
-                if(value === null){
-                    return 
+                if (value === null) {
+                    return
                 }
                 value.forEach((file: File, index: number) => {
                     formData.append(`${key}[${index}]`, file)
@@ -124,11 +124,11 @@ function AdminSingleListing() {
         if (response.data) {
             console.log(response.data)
             setErrorData({
-                errorStatus: "Success",
-                errorMessage: "Successfully Updated",
-                errorAdditional: "Success"
+                errorStatus: 'Success',
+                errorMessage: 'Successfully Updated',
+                errorAdditional: 'Success',
             })
-            setIsModalActive(true);
+            setIsModalActive(true)
         } else {
             const { status, message, error } = response.error
             setErrorData({
@@ -217,49 +217,86 @@ function AdminSingleListing() {
                             </div>
                             <p className="hoverMessage">**Hover to zoom**</p>
                         </div>
-                        <form onSubmit={handleSubmission} encType="multipart/form-data">
-                        <div className="listingDetails">
-                            <div>
-                                <span>Brand:</span> <input type="text" name="brand" id="brand" value={listingData.brand} onChange={handleInputChange}/> 
-                            </div>
-                            <div>
-                                <span>Price: </span> <input type="text" name="price" id="price" value={listingData.price} onChange={handleInputChange}/>
-                            </div>
-                            <div>
-                                <span>Category:</span> <input type="text" name="category" id="category" value={listingData.category} onChange={handleInputChange}/>
-                            </div>
-                            <div>
-                                <span>Condition:</span> <input type="text" name="condition" id="condition" value={listingData.condition} onChange={handleInputChange}/>
-                            </div>
+                        <form
+                            onSubmit={handleSubmission}
+                            encType="multipart/form-data"
+                        >
+                            <div className="listingDetails">
+                                <div>
+                                    <span>Brand:</span>{' '}
+                                    <input
+                                        type="text"
+                                        name="brand"
+                                        id="brand"
+                                        value={listingData.brand}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <span>Price: </span>{' '}
+                                    <input
+                                        type="text"
+                                        name="price"
+                                        id="price"
+                                        value={listingData.price}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <span>Category:</span>{' '}
+                                    <input
+                                        type="text"
+                                        name="category"
+                                        id="category"
+                                        value={listingData.category}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <span>Condition:</span>{' '}
+                                    <input
+                                        type="text"
+                                        name="condition"
+                                        id="condition"
+                                        value={listingData.condition}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
 
-                            <div>
-                                <span>Quantity Available: </span>
-                                <input type="number" name="quantityAvailable" id="quantityAvailable" value={listingData.quantityAvailable} onChange={handleInputChange}/>
+                                <div>
+                                    <span>Quantity Available: </span>
+                                    <input
+                                        type="number"
+                                        name="quantityAvailable"
+                                        id="quantityAvailable"
+                                        value={listingData.quantityAvailable}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <span>New Images : </span>{' '}
+                                    <input
+                                        type="file"
+                                        name="images"
+                                        id="images"
+                                        onChange={handleFileChange}
+                                        multiple
+                                    />
+                                </div>
+                                <div className="listingDescription">
+                                    <span>Description: </span>{' '}
+                                    <textarea
+                                        required
+                                        name="description"
+                                        value={listingData.description}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <span>New Images : </span>{' '}
-                                <input
-                        type="file"
-                        name="images"
-                        id="images"
-                        onChange={handleFileChange}
-                        multiple
-                    />
+                            <div className="editButtons">
+                                <button>Update</button>
+                                <button>Delete</button>
                             </div>
-                            <div className="listingDescription">
-                                <span>Description: </span>{' '}
-                                <textarea
-                                required
-                                name="description"
-                                value={listingData.description}
-                                onChange={handleInputChange}
-                            />
-                            </div>
-                        </div>
-                        <div className="editButtons">
-                            <button>Update</button>
-                            <button >Delete</button>
-                        </div>
                         </form>
                     </div>
                 </div>
