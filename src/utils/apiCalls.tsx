@@ -110,7 +110,7 @@ export async function emailSubmission(emailForm: string) {
     }
 }
 
-export async function deleteListing(id: number){
+export async function deleteListing(id: number) {
     try {
         const response = await fetch(url + '/instruments/' + id, {
             method: 'DELETE',
@@ -123,5 +123,5 @@ export async function deleteListing(id: number){
         }
     } catch (error) {
         return { error }
-    } 
+    }
 }

@@ -1,6 +1,10 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { deleteListing, singleListingCall, updateListing } from '../utils/apiCalls'
+import {
+    deleteListing,
+    singleListingCall,
+    updateListing,
+} from '../utils/apiCalls'
 import Loading from '../components/Loading'
 import ErrorScreen from '../components/ErrorScreen'
 
@@ -77,12 +81,16 @@ function AdminSingleListing() {
                 errorMessage: message,
                 errorAdditional: error,
                 confirmNeeded: false,
-
             })
             setIsModalActive(true)
         }
     }
-
+    const deleteCurrentImage = () => {
+        const newArray = listingData.imageUrls
+        newArray.splice(currentImageIndex, 1)
+        setCurrentImageIndex(0)
+        setListingData({ ...listingData, imageUrls: newArray })
+    }
     const handleSubmission = async (
         event: React.FormEvent<HTMLFormElement>
     ) => {
@@ -112,7 +120,7 @@ function AdminSingleListing() {
                 errorStatus: 'Success',
                 errorMessage: 'Successfully Updated',
                 errorAdditional: 'Success',
-                confirmNeeded: false
+                confirmNeeded: false,
             })
             setIsModalActive(true)
         } else {
@@ -121,29 +129,29 @@ function AdminSingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
-                confirmNeeded: false
+                confirmNeeded: false,
             })
             setIsModalActive(true)
         }
     }
-    function triggerDeletion(){
-        deleteListing(listingData.id);
+    function triggerDeletion() {
+        deleteListing(listingData.id)
         setErrorData({
-            errorStatus: "Confirm Deletion",
+            errorStatus: 'Confirm Deletion',
             errorAdditional: `Confirm Deletion of ${listingData.name}`,
             errorMessage: `Confirm Deletion of ${listingData.name}`,
-            confirmNeeded: false
+            confirmNeeded: false,
         })
     }
-    function confirmDeletion(event: FormEvent){
+    function confirmDeletion(event: FormEvent) {
         event.preventDefault()
         setErrorData({
-            errorStatus: "Confirm Deletion",
+            errorStatus: 'Confirm Deletion',
             errorAdditional: `Confirm Deletion of ${listingData.name}`,
             errorMessage: `Confirm Deletion of ${listingData.name}`,
-            confirmNeeded: true
+            confirmNeeded: true,
         })
-        setIsModalActive(true);
+        setIsModalActive(true)
     }
 
     if (isLoading) {
@@ -178,7 +186,6 @@ function AdminSingleListing() {
                             className="listingImage"
                             style={{ overflow: 'hidden' }}
                         >
-                            <p className='deleteImage'>X</p>
                             <img
                                 src={listingData.imageUrls[currentImageIndex]}
                                 alt={`${listingData.name}`}
@@ -192,6 +199,12 @@ function AdminSingleListing() {
                                     )
                                 )}
                             </div>
+                            <button
+                                className="deleteIcon"
+                                onClick={deleteCurrentImage}
+                            >
+                                Delete Image
+                            </button>
                             <div className="imageControl">
                                 <button
                                     className={
@@ -301,7 +314,11 @@ function AdminSingleListing() {
                             </div>
                             <div className="editButtons">
                                 <button>Update</button>
-                                <button onClick={(event) => confirmDeletion(event)}>Delete</button>
+                                <button
+                                    onClick={(event) => confirmDeletion(event)}
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </form>
                     </div>
