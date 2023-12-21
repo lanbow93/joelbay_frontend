@@ -90,6 +90,8 @@ function AdminListings() {
                     status={errorData.errorStatus}
                     error={errorData.errorAdditional}
                     closeModal={setIsModalActive}
+                    confirmNeeded={false}
+                    confirmFunction={console.log}
                 />
             </div>
             <h1>Admin Page</h1>

@@ -102,6 +102,8 @@ function CreateMenu() {
                         status={errorData.errorStatus}
                         error={errorData.errorAdditional}
                         closeModal={setIsModalActive}
+                        confirmNeeded={false}
+                        confirmFunction={console.log}
                     />
                 </div>
 
