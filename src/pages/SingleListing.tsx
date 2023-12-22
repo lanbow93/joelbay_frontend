@@ -24,6 +24,7 @@ function SingleListing() {
         id: 0,
         imageUrls: [],
         name: '',
+        discount: '',
         price: '',
         quantityAvailable: 0,
         updatedAt: '',

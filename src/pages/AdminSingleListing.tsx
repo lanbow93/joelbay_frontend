@@ -29,6 +29,7 @@ function AdminSingleListing() {
         images: null as File[] | null,
         imageUrls: [],
         name: '',
+        discount: '',
         price: '',
         quantityAvailable: 0,
         updatedAt: '',
@@ -249,6 +250,7 @@ function AdminSingleListing() {
                                         id="brand"
                                         value={listingData.brand}
                                         onChange={handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div>
@@ -259,6 +261,8 @@ function AdminSingleListing() {
                                         id="price"
                                         value={listingData.price}
                                         onChange={handleInputChange}
+                                        max={999.99}
+                                        required
                                     />
                                 </div>
                                 <div>
@@ -269,6 +273,7 @@ function AdminSingleListing() {
                                         id="category"
                                         value={listingData.category}
                                         onChange={handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div>
@@ -279,6 +284,7 @@ function AdminSingleListing() {
                                         id="condition"
                                         value={listingData.condition}
                                         onChange={handleInputChange}
+                                        required
                                     />
                                 </div>
 
@@ -290,6 +296,18 @@ function AdminSingleListing() {
                                         id="quantityAvailable"
                                         value={listingData.quantityAvailable}
                                         onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <span>Discount: </span>
+                                    <input
+                                        type="number"
+                                        name="discount"
+                                        id="discount"
+                                        value={listingData.discount}
+                                        onChange={handleInputChange}
+                                        max={100}
                                     />
                                 </div>
                                 <div>

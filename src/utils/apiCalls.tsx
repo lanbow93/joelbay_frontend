@@ -3,7 +3,7 @@ import url from '../router/url'
 export async function listingCall(originUrl: string) {
     let queries = "";
     if(originUrl === "/specials"){
-        queries = "discount=true"
+        queries = "?discount=true"
     }
     try {
         const response = await fetch(url + '/instruments/' + queries, {
