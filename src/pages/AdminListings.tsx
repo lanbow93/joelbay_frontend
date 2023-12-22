@@ -4,8 +4,10 @@ import ErrorScreen from '../components/ErrorScreen'
 import ListingCard from '../components/ListingCard'
 import { listingCall } from '../utils/apiCalls'
 import { uniqueObjectArrayList } from '../utils/SharedFunctions'
+import { useLocation } from 'react-router'
 
 function AdminListings() {
+    const location = useLocation()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [errorData, setErrorData] = useState({
@@ -32,7 +34,8 @@ function AdminListings() {
 
     const getListings = async () => {
         setIsLoading(true)
-        const response = await listingCall()
+        const currentPath = location.pathname
+        const response = await listingCall(currentPath)
 
         setIsLoading(false)
         if (response.data) {

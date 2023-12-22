@@ -97,7 +97,7 @@ function Specials() {
                     confirmFunction={console.log}
                 />
             </div>
-            {<h1>Listings Page</h1>}
+            <h1>Listings Page</h1>
             <div className="filter">
                 <h2>Filter Options</h2>
                 <p className="bold underline">Category</p>

@@ -82,7 +82,6 @@ function SingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
-                
             })
             setIsModalActive(true)
         }
