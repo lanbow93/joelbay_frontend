@@ -24,6 +24,7 @@ function SingleListing() {
         id: 0,
         imageUrls: [],
         name: '',
+        discount: 0,
         price: '',
         quantityAvailable: 0,
         updatedAt: '',
@@ -81,7 +82,6 @@ function SingleListing() {
                 errorStatus: status,
                 errorMessage: message,
                 errorAdditional: error,
-                
             })
             setIsModalActive(true)
         }
@@ -192,7 +192,20 @@ function SingleListing() {
                                 <span>Brand:</span> {listingData.brand}
                             </div>
                             <div>
-                                <span>Price: </span> ${listingData.price}
+                            <span>Price: </span>
+                    <span className={Number(listingData.discount) > 0 ? 'markOut' : ''}>
+                        ${listingData.price}
+                    </span>
+                    <span className={Number(listingData.discount) > 0 ? '' : 'hidden'}>
+                        {' '}
+                        $
+                        {parseFloat(
+                            (Number(listingData.price) * ((100 - listingData.discount) * 0.01)).toFixed(
+                                2
+                            )
+                        )}
+                    </span>
+                                
                             </div>
                             <div>
                                 <span>Category:</span> {listingData.category}

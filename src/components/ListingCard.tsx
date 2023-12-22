@@ -9,6 +9,7 @@ interface ListingProps {
     id: number
     imageUrls: [string]
     name: string
+    discount: number
     price: string
     quantityAvailable: string
     isAdmin: boolean
@@ -23,6 +24,7 @@ function ListingCard(props: ListingProps) {
         id,
         imageUrls,
         name,
+        discount,
         price,
         quantityAvailable,
         isAdmin,
@@ -44,7 +46,19 @@ function ListingCard(props: ListingProps) {
                 <p className="bold">Description:</p>
                 <p className="product-description">{description}</p>
                 <p className="product-price">
-                    <span className="bold">Price: </span>${price}
+                    <span className="bold">Price: </span>
+                    <span className={discount > 0 ? 'markOut' : ''}>
+                        ${price}
+                    </span>
+                    <span className={discount > 0 ? '' : 'hidden'}>
+                        {' '}
+                        $
+                        {parseFloat(
+                            (Number(price) * ((100 - discount) * 0.01)).toFixed(
+                                2
+                            )
+                        )}
+                    </span>
                 </p>
                 <p className="product-quantity">
                     <span className="bold">Available:</span> {quantityAvailable}

@@ -17,6 +17,10 @@ $bgOffset: #526070;
 .hidden {
     display: none;
 }
+
+.markOut {
+    text-decoration: wavy line-through red;
+}
 .navigation {
     background-color: $bgcolor;
     color: white;
