@@ -6,7 +6,7 @@ import ListingCard from '../components/ListingCard'
 import { listingCall } from '../utils/apiCalls'
 import { uniqueObjectArrayList } from '../utils/SharedFunctions'
 
-function Listings() {
+function Specials() {
     const location = useLocation()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
@@ -176,4 +176,4 @@ function Listings() {
     )
 }
 
-export default Listings
+export default Specials
