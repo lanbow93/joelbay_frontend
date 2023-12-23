@@ -68,7 +68,7 @@ function ListingCard(props: ListingProps) {
                     to={
                         isAdmin
                             ? `../admin/${id}?identity=${name}`
-                            : `${id}?identity=${name}`
+                            : `../listings/${id}?identity=${name}`
                     }
                 >
                     full details

@@ -192,20 +192,33 @@ function SingleListing() {
                                 <span>Brand:</span> {listingData.brand}
                             </div>
                             <div>
-                            <span>Price: </span>
-                    <span className={Number(listingData.discount) > 0 ? 'markOut' : ''}>
-                        ${listingData.price}
-                    </span>
-                    <span className={Number(listingData.discount) > 0 ? '' : 'hidden'}>
-                        {' '}
-                        $
-                        {parseFloat(
-                            (Number(listingData.price) * ((100 - listingData.discount) * 0.01)).toFixed(
-                                2
-                            )
-                        )}
-                    </span>
-                                
+                                <span>Price: </span>
+                                <span
+                                    className={
+                                        Number(listingData.discount) > 0
+                                            ? 'markOut'
+                                            : ''
+                                    }
+                                >
+                                    ${listingData.price}
+                                </span>
+                                <span
+                                    className={
+                                        Number(listingData.discount) > 0
+                                            ? ''
+                                            : 'hidden'
+                                    }
+                                >
+                                    {' '}
+                                    $
+                                    {parseFloat(
+                                        (
+                                            Number(listingData.price) *
+                                            ((100 - listingData.discount) *
+                                                0.01)
+                                        ).toFixed(2)
+                                    )}
+                                </span>
                             </div>
                             <div>
                                 <span>Category:</span> {listingData.category}
