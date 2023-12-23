@@ -116,7 +116,6 @@ function AdminSingleListing() {
         const response = await updateListing(formData, listingData.id)
         setIsLoading(false)
         if (response.data) {
-            console.log(response.data)
             setErrorData({
                 errorStatus: 'Success',
                 errorMessage: 'Successfully Updated',

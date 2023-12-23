@@ -74,7 +74,6 @@ function CreateMenu() {
         const response = await createListing(formData)
         setIsLoading(false)
         if (response.data) {
-            console.log(response.data)
             navigate('/createMenu')
         } else {
             const { status, message, error } = response.error
